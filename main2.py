@@ -46,6 +46,10 @@ class ReservationTicket:
         name = name.title()
         return name
 
+    @staticmethod
+    def convert(amount):
+        return amount * 1.2
+
 
 df = pandas.read_csv("hotels.csv", dtype={"id":str})
 
@@ -75,3 +79,8 @@ print(hotel1.get_hotel_count(df))
 ticket = ReservationTicket(customer_name="john smith ", hotel_object=hotel1)
 print(ticket.the_customer_name)
 print(ticket.generate())
+
+# Static method
+# It does not relate to an instance but relates to Class
+converted = ReservationTicket.convert(10)
+print(converted)
