@@ -1,4 +1,5 @@
 import pandas
+from abc import ABC, abstractmethod
 
 
 class Hotel:
@@ -20,7 +21,14 @@ class Hotel:
             return False
 
 
-class ReservationTicket:
+class Ticket(ABC):
+
+    @abstractmethod
+    def generate(self):
+        pass
+
+
+class ReservationTicket(Ticket):
     def __init__(self, customer_name, hotel_object):
         self.name = customer_name
         self.hotel = hotel_object
