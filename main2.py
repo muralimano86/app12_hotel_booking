@@ -34,12 +34,17 @@ class ReservationTicket:
         content = f"""
         Thank you for reservation.
         Here is your booking confirmation
-        Name: {self.name} 
+        Name: {self.the_customer_name} 
         Hotel: {self.hotel.name}
         """
 
         return content
 
+    @property
+    def the_customer_name(self):
+        name = self.name.strip()
+        name = name.title()
+        return name
 
 
 df = pandas.read_csv("hotels.csv", dtype={"id":str})
@@ -64,3 +69,9 @@ print(Hotel.watermark)
 # Class method
 print(Hotel.get_hotel_count(df))
 print(hotel1.get_hotel_count(df))
+
+# Class property
+# Behaves like variable but uses method
+ticket = ReservationTicket(customer_name="john smith ", hotel_object=hotel1)
+print(ticket.the_customer_name)
+print(ticket.generate())
