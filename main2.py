@@ -20,6 +20,10 @@ class Hotel:
         else:
             return False
 
+    @classmethod
+    def get_hotel_count(cls, data):
+        return len(data)
+
 
 class ReservationTicket:
     def __init__(self, customer_name, hotel_object):
@@ -43,10 +47,20 @@ df = pandas.read_csv("hotels.csv", dtype={"id":str})
 hotel1=Hotel(hotel_id="188")
 hotel2=Hotel(hotel_id="134")
 
+# Instance method
+print(hotel1.available())
+
+# Instance variable
 print(hotel1.name)
 print(hotel2.name)
 
+# Class variable
 print(hotel1.watermark)
 print(hotel2.watermark)
 
+# Class variable
 print(Hotel.watermark)
+
+# Class method
+print(Hotel.get_hotel_count(df))
+print(hotel1.get_hotel_count(df))
